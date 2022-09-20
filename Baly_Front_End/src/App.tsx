@@ -8,6 +8,7 @@ function App() {
   const [cpf, setCpf] = useState('')
   const [sobrenome, setSobrenome] = useState('')
   const [password, setPassword] = useState('')
+  const [dt_nasc, setNasci] = useState('')
   
 
   const json = {
@@ -17,6 +18,8 @@ function App() {
     sobrenome: sobrenome,
     cpf: cpf,
     telefone: telefone,
+    dt_nasc: dt_nasc,
+    
   }
   const funcao = (e: any) => {
     e.preventDefault();
@@ -64,6 +67,11 @@ function App() {
             type="nome"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            type="text"
+            value={dt_nasc}
+            onChange={(e) => setNasci(e.target.value)}
           />
         </div>
       </div>
