@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './cadastro/App'
+import Router from './routes/Route'
+
+
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <Router />
   </React.StrictMode>
 )
