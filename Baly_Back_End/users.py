@@ -9,3 +9,4 @@ class Usuario:
     sobrenome : str
     password : str
     dt_nasc : date
+    user_type: str
