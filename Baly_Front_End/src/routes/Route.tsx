@@ -1,11 +1,13 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Agendar from "../agendaFuncionario/agenda";
-import CadastroFuncionario from "../cadastroFuncionario/cadastro.funcionario";
-import Cadastro from "../cadastroUsuario/cadastro";
+import Agendar from "../components/agendaFuncionario/agenda";
+import CadastroFuncionario from "../components/cadastroFuncionario/cadastro.funcionario";
+import Cadastro from "../components/cadastroUsuario/cadastro";
 import Homepage from "../homepage/homepage";
 import Login from "../login/login";
 
-export default function Router() {
+import { App, AppPageContainer } from "./global.styles";
+
+export default function Rotinhas() {
   return (
     <BrowserRouter>
       <Routes>
