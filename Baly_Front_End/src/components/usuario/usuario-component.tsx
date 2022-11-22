@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { mockBackend } from "../../services/mockBackend";
 import Estetica from "../../assets/Estetica.jpg";
 import { Modal } from "../homeModal";
-import TopBar from "../top-bar/top-bar.component";
+import TopBar from "../../top-bar/top-bar.component";
 import "../usuario/usuario-component.styles.css";
 
 type Card = {
