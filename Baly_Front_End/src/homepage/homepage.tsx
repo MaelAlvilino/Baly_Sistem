@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Agendar from "../components/agendaFuncionario/agenda";
 import Dialog from "../components/modal/dialog.component";
 import { SideMenuOpened, SideMenuOpenedOptions } from "../login/login.styles";
-import TopBar from "../top-bar/top-bar.component";
+import TopBar from "../components/top-bar/top-bar.component";
 import Usuario from "../components/usuario/usuario-component";
 
 function Homepage() {

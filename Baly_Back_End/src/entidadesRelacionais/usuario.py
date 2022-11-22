@@ -3,7 +3,7 @@ from sqlalchemy import BigInteger, Column, SmallInteger, String, DateTime
 from src.database.base import base
 
 class Usuario(base):
-    __tablename__ = 'usuario2'
+    __tablename__ = 'Usuario'
     id_cliente = Column(BigInteger, primary_key=True)
     nome = Column(String(256))
     password = Column(String(256))

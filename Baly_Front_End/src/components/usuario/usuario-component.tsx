@@ -1,38 +1,77 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { mockBackend } from "../../services/mockBackend";
+import Estetica from "../../assets/Estetica.jpg";
+import { Modal } from "../homeModal";
+import TopBar from "../top-bar/top-bar.component";
+import "../usuario/usuario-component.styles.css";
 
+type Card = {
+  title: string;
+  subTitle: string;
+  image: string;
+  description: string;
+  subDescription: string;
+  value: string;
+};
 function Usuario() {
-  const [a, setA] = useState("");
-  const [b, setB] = useState("");
-  const [c, setC] = useState("");
-  const procurarDados = async () => {
-    try {
-      const response = await axios.get(`http://127.0.0.1:5000/Procedimento`);
+  const [cardList, setCardList] = useState<Card[]>([]);
+  const [showModal, setShowModal] = useState(false);
+  const [currentCard, setCurrentCard] = useState<Card | null>(null);
 
-      return response;
-    } catch (err: any) {
-      return err.response.data;
+  useEffect(() => {
+    const response = mockBackend;
+    if (response && response.length > 0) {
+      setCardList(response);
     }
-  };
+  }, []);
 
-  const listarDados = async () => {
-    const response = await procurarDados();
-
-    let primeiroProc = response.data;
-    console.log(primeiroProc);
-    setA(String(primeiroProc).substring(0, 15));
-    setB(String(primeiroProc).substring(16, 33));
-    setC(String(primeiroProc).substring(34, 51));
-    console.log(a, b, c);
-  };
+  function openModal(item: Card) {
+    setCurrentCard(item);
+    setShowModal(true);
+  }
 
   return (
     <>
-      <h1> consultar procedimentos</h1>
-      <button onClick={listarDados}> PROCEDIMENTOS</button>
-      <p>{a}</p>
-      <p>{b}</p>
-      <p>{c}</p>
+      <div className="home-container">
+        <h1>conteudo</h1>
+        <div className="home-content">
+          <div className="cards">
+            {cardList &&
+              cardList.length > 0 &&
+              cardList.map((item: Card, key: number) => (
+                <div
+                  key={key}
+                  onClick={() => openModal(item)}
+                  className="home-auction-card"
+                >
+                  <img src={Estetica}></img>
+                  <h4>{item.subTitle}</h4>
+                  <span>{item.description} </span>
+                  <span>{item.value}</span>
+                </div>
+              ))}
+          </div>
+        </div>
+        {showModal && currentCard && (
+          <Modal
+            header={currentCard?.title}
+            setShowModal={setShowModal}
+            cancelFunction={() => {}}
+            confirmFunction={() => {}}
+            loadingModal=""
+            confirmText="Agendar Procedimento"
+          >
+            <div className="home-auction-card">
+              <img src={Estetica}></img>
+              <h4>{currentCard?.subTitle}</h4>
+              <span>{currentCard.subDescription} </span>
+              <span>{currentCard.value}</span>
+              <a>{currentCard.description} </a>
+            </div>
+          </Modal>
+        )}
+      </div>
     </>
   );
 }
